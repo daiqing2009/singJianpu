@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "唱简谱-列表",
+  "navigationBarBackgroundColor": "#2d8cf0",
+  "usingComponents": {
+    "i-card": "../../../static/iview/card/index"
+  }
+}

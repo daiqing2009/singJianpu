@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/main",
+
+    "pages/jianpuEdit/main",
+    "pages/jianpuList/main",
+    "pages/jianpuView/main",
+    "pages/logs/main",
+    "pages/counter/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "cloud": true
+}

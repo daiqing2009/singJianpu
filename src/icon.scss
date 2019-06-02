@@ -1,0 +1,31 @@
+// 从ICON
+@font-face {
+  font-family: 'iconfont';  /* project id 1211411 */
+  src: url('//at.alicdn.com/t/font_1211411_4ecrp4hbjmy.eot');
+  src: url('//at.alicdn.com/t/font_1211411_4ecrp4hbjmy.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1211411_4ecrp4hbjmy.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1211411_4ecrp4hbjmy.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1211411_4ecrp4hbjmy.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1211411_4ecrp4hbjmy.svg#iconfont') format('svg');
+}
+
+._icon {
+  font-family:"iconfont" !important;
+  font-size:60rpx;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon2x {
+  font-size:120rpx;
+}
+
+/*本项目使用的18个图标  */
+.icon-edit:before{content: '\e8c7';}
+.icon-share:before{content: '\e6c0';}
+.icon-play:before{content: '\e611';}
+.icon-pause:before{content: '\e612';}
+
+
+
