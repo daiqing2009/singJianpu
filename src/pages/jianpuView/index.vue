@@ -20,14 +20,15 @@
 import { mapState, mapGetters, mapActions } from "vuex";
 require('../../../static/musje/snap.svg-min.js')
 // require('../../../static/musje/MIDI-wrapper.js')
+const MIDI = require('../../../static/musje/MIDI.js')
 
-// const musje =  require('../../../static/musje/musje.min.js')
+const musje = require('../../../static/musje/musje.min.js')
 export default {
   data() {
     return {};
   },
   computed: {
-    // score: musje.parse(this.jianpu.chef+ ' '  + this.jianpu.rytheym  + ' ' + this.jianpu.musString),
+    score: musje.parse(this.jianpu.chef+ ' '  + this.jianpu.rytheym  + ' ' + this.jianpu.musString),
     ...mapState({
       // jianpuList: state => state.jianpu.jianpuList,
       // jianpuPageNo: state => state.jianpu.jianpuPageNo
@@ -60,7 +61,7 @@ export default {
   background: red;
 }
 .img {
-  width: 100%;
+  /* width: 100%; */
   clear: both;
   display: block;
 }
