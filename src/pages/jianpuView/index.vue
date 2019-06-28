@@ -3,7 +3,7 @@
     <div class="music-sheet">
       <movable-area class="music-sheet">
         <movable-view style="img" direction="all">
-          <image class="img" :src="jianpu.sheetPic"></image>
+          <image class="img" :src="jianpu.sheetPic"/>
         </movable-view>
       </movable-area>
     </div>
@@ -18,30 +18,32 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
-require('../../../static/musje/snap.svg-min.js')
-// require('../../../static/musje/MIDI-wrapper.js')
-const MIDI = require('../../../static/musje/MIDI.js')
+// const musje = this.globalData.musje;
+const musje = require("../../../static/musje/musje.js");
 
-const musje = require('../../../static/musje/musje.min.js')
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   computed: {
-    score: musje.parse(this.jianpu.chef+ ' '  + this.jianpu.rytheym  + ' ' + this.jianpu.musString),
     ...mapState({
       // jianpuList: state => state.jianpu.jianpuList,
       // jianpuPageNo: state => state.jianpu.jianpuPageNo
-      jianpu: state => state.jianpu.jianpuCurrent
-      // currentShop: state => state.shop.currentShop
+      jianpu: state => state.jianpu.jianpuCurrent,
+      // musje: this.musje
     })
   },
   methods: {
     navToEdit() {},
     play() {
-      score.play();
+      // console.log(this.score);
+      this.score.play();
     },
-    pause() {},
+    pause() {
+      // console.log(this.score);
+      this.score.stop();
+    },
     share() {},
     ...mapActions("jianpu", ["getJianpu"])
   },
@@ -49,7 +51,29 @@ export default {
     // let app = getApp()
     console.log(this.$root.$mp.query); //{'param' : param}
     const query = this.$root.$mp.query;
-    this.getJianpu(query.jianpuId)
+    this.getJianpu(query.jianpuId);
+  },
+  mounted() {
+    //初始化MIDI
+    musje.loadPlugin({
+      soundfontUrl: "cloud://test-169e27.7465-test-169e27/soundfont/",
+      instrument: "acoustic_grand_piano", // or multiple instruments
+      onsuccess: function() {
+        // $scope.playDisabled = false;
+        // $scope.$digest();
+        console.log("musje loaded")
+      }
+    });
+    let score = {};
+    try {
+      score = musje.parse(this.jianpu.rytheym + " " + this.jianpu.musString);
+    } catch (err) {
+      this.totalMeasures = "N/A";
+      this.error = err.message;
+    }
+    if (score) {
+      this.score = new musje.Score(score);
+    }
   }
 };
 </script>

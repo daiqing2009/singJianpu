@@ -8,6 +8,7 @@ Vue.config.errorHandler = function (err) {
     console.error(err)
   }
 }
+
 App.store = store
 const app = new Vue(App)
 app.$mount()
